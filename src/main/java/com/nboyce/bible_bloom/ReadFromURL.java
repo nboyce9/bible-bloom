@@ -41,14 +41,16 @@ public class ReadFromURL {
 
             ObjectMapper mapper = new ObjectMapper();
             Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
-
+            Book bookWrapper = mapper.readValue(jsonBuilder.toString(), Book.class);
 
 
             if(url.toString().contains("/verses/")) {
+
+                    System.out.println(bookWrapper.getBook() + " " + bookWrapper.getChapter() + ":" + bookWrapper.getVerse() + " - " + bookWrapper.getText());
+            }else{
                 // Loop through the verses
                 for (Book data : wrapper.data) {
-                    System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());
-                }
+                    System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());}
             }
         } catch (IOException e) {
             e.printStackTrace(); // Handle exceptions (e.g., MalformedURLException or IOException)
