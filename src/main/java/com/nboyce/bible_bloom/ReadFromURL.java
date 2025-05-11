@@ -56,6 +56,20 @@ public class ReadFromURL {
             e.printStackTrace();
         }
     }
+
+    private static URL getUrl(String version, String book, String chapter, String verse) throws MalformedURLException {
+        URL url;
+        String baseURL = "https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/" + version + "/books/" + book + "/chapters/" + chapter;
+
+        // Create a different URL object for verse or no verse
+        if(verse != null){
+            url = new URL(baseURL +"/verses/" + verse + ".json");
+        }
+        else{
+            url = new URL(baseURL + ".json");
+        }
+        return url;
+    }
 }
 
 
