@@ -16,7 +16,7 @@ public class ReadFromURL {
             String version = "en-asv";
             String book = "genesis".toLowerCase();
             String chapter = "1";
-            String verse = null;
+            String verse = "3";
 
             URL url;
             String baseURL = "https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/" + version + "/books/" + book + "/chapters/" + chapter;
@@ -40,14 +40,14 @@ public class ReadFromURL {
             reader.close();
 
             ObjectMapper mapper = new ObjectMapper();
-            Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
-            Book bookWrapper = mapper.readValue(jsonBuilder.toString(), Book.class);
+
 
 
             if(url.toString().contains("/verses/")) {
-
-                    System.out.println(bookWrapper.getBook() + " " + bookWrapper.getChapter() + ":" + bookWrapper.getVerse() + " - " + bookWrapper.getText());
+                    Book bookWrapper = mapper.readValue(jsonBuilder.toString(), Book.class);
+                    System.out.println(book + " " + chapter + ":" + bookWrapper.getVerse() + " - " + bookWrapper.getText());
             }else{
+                Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
                 // Loop through the verses
                 for (Book data : wrapper.data) {
                     System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());}
