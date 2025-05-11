@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 public class ReadFromURL {
@@ -18,16 +20,7 @@ public class ReadFromURL {
             String chapter = "1";
             String verse = "3";
 
-            URL url;
-            String baseURL = "https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/" + version + "/books/" + book + "/chapters/" + chapter;
-
-            // Create a different URL object for verse or no verse
-            if(verse != null){
-                url = new URL(baseURL +"/verses/" + verse + ".json");
-            }
-            else{
-                url = new URL(baseURL + ".json");
-            }
+            URL url = getUrl(verse, book, chapter, verse);
             // Open a stream to the URL
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
@@ -54,19 +47,21 @@ public class ReadFromURL {
         } catch (IOException e) {
             // Handle exceptions (IOException)
             e.printStackTrace();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private static URL getUrl(String version, String book, String chapter, String verse) throws MalformedURLException {
+    private static URL getUrl(String version, String book, String chapter, String verse) throws MalformedURLException, URISyntaxException {
         URL url;
         String baseURL = "https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/" + version + "/books/" + book + "/chapters/" + chapter;
 
         // Create a different URL object for verse or no verse
         if(verse != null){
-            url = new URL(baseURL +"/verses/" + verse + ".json");
+            url = new URI(baseURL +"/verses/" + verse + ".json").toURL();
         }
         else{
-            url = new URL(baseURL + ".json");
+            url = new URI(baseURL + ".json").toURL();
         }
         return url;
     }
