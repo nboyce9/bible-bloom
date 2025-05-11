@@ -16,13 +16,13 @@ public class ReadFromURL {
             String version = "en-asv";
             String book = "genesis".toLowerCase();
             String chapter = "1";
-            String verse= "3";
+            String verse = null;
 
             URL url;
             String baseURL = "https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/" + version + "/books/" + book + "/chapters/" + chapter;
-            // Create a URL object for diff cases vs/no vs
 
-            if(!verse.isEmpty() || verse != null ){
+            // Create a URL object for diff cases vs/no vs
+            if(verse != null){
                 url = new URL(baseURL +"/verses/" + verse + ".json");
             }
             else{
@@ -42,9 +42,13 @@ public class ReadFromURL {
             ObjectMapper mapper = new ObjectMapper();
             Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
 
-            // Loop through the verses
-            for (Book data : wrapper.data) {
-                System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());
+
+
+            if(url.toString().contains("/verses/")) {
+                // Loop through the verses
+                for (Book data : wrapper.data) {
+                    System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace(); // Handle exceptions (e.g., MalformedURLException or IOException)
