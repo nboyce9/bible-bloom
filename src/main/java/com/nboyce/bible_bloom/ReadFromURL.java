@@ -21,7 +21,7 @@ public class ReadFromURL {
             URL url;
             String baseURL = "https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/" + version + "/books/" + book + "/chapters/" + chapter;
 
-            // Create a URL object for diff cases vs/no vs
+            // Create a different URL object for verse or no verse
             if(verse != null){
                 url = new URL(baseURL +"/verses/" + verse + ".json");
             }
@@ -41,19 +41,19 @@ public class ReadFromURL {
 
             ObjectMapper mapper = new ObjectMapper();
 
-
-
             if(url.toString().contains("/verses/")) {
-                    Book bookWrapper = mapper.readValue(jsonBuilder.toString(), Book.class);
-                    System.out.println(book + " " + chapter + ":" + bookWrapper.getVerse() + " - " + bookWrapper.getText());
+                Book bookWrapper = mapper.readValue(jsonBuilder.toString(), Book.class);
+                System.out.println(book + " " + chapter + ":" + bookWrapper.getVerse() + " - " + bookWrapper.getText());
             }else{
                 Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
                 // Loop through the verses
                 for (Book data : wrapper.data) {
                     System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());}
             }
+
         } catch (IOException e) {
-            e.printStackTrace(); // Handle exceptions (e.g., MalformedURLException or IOException)
+            // Handle exceptions (IOException)
+            e.printStackTrace();
         }
     }
 }
