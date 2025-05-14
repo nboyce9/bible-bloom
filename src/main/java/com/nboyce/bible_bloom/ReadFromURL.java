@@ -5,22 +5,26 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Scanner;
 
 public class ReadFromURL {
     public static void main(String[] args) {
         try {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter a bible book: ");
             String version = "en-asv";
-            String book = "genesis".toLowerCase();
+            String book = scanner.nextLine().toLowerCase();
             String chapter = "1";
-            String verse = "3";
+            String verse = "10";
 
-            URL url = getUrl(verse, book, chapter, verse);
+            URL url = getUrl(version, book, chapter, verse);
             // Open a stream to the URL
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
