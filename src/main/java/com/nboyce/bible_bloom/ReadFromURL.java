@@ -4,10 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -19,10 +16,12 @@ public class ReadFromURL {
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter a bible book: ");
-            String version = "en-asv";
+            String version = "en-kjv";
             String book = scanner.nextLine().toLowerCase();
-            String chapter = "1";
-            String verse = "10";
+            Console console = System.console();
+
+            String chapter = console.readLine("Enter a chapter: ");
+            String verse = console.readLine("Enter a verse: ");
 
             URL url = getUrl(version, book, chapter, verse);
             // Open a stream to the URL
