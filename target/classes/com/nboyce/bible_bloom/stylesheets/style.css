@@ -1,7 +1,6 @@
 #vbox{
     -fx-background-color:  #053b05;
-
 }
-#anchorPane{
-    -fx-border-color: yellow;
+#homeLabel{
+    -fx-text-fill: #ca9c01;
 }
