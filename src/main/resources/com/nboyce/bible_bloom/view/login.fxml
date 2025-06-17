@@ -11,7 +11,7 @@
             <Label fx:id="passwordLabel" layoutX="128.0" layoutY="146.0" text="Password :" />
             <TextField fx:id="emailField" layoutX="219.0" layoutY="67.0" />
             <TextField fx:id="passwordField" layoutX="219.0" layoutY="142.0" />
-            <Button fx:id="loginBtn" layoutX="274.0" layoutY="276.0" mnemonicParsing="false" text="Login" />
+            <Button fx:id="loginBtn" layoutX="274.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" text="Login" />
             <Hyperlink fx:id="registerLink" layoutX="202.0" layoutY="318.0" text="Don't have an account? Register here" />
          </children>
       </AnchorPane>
