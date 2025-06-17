@@ -2,11 +2,14 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nboyce.bible_bloom.controller.HomepageController">
    <children>
-      <Button fx:id="button" layoutX="262.0" layoutY="299.0" mnemonicParsing="false" onAction="#greet" text="Click" />
-      <Label fx:id="label" layoutX="262.0" layoutY="96.0" text="Label" />
+      <Button fx:id="signinBtn" layoutX="262.0" layoutY="299.0" mnemonicParsing="false" onAction="#greet" text="Sign In" />
+      <Label fx:id="homeLabel" layoutX="182.0" layoutY="94.0" text="Wiz Walk" textFill="#edcc24">
+         <font>
+            <Font name="Inconsolata" size="49.0" />
+         </font></Label>
    </children>
 </AnchorPane>
