@@ -9,13 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-    private FXMLLoader loader;
-    private Scene scene;
     private Stage stage;
-    public void login(ActionEvent event) throws IOException {
-        loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        scene = new Scene(loader.load());
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    public void login() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        Scene scene = new Scene(loader.load());
         stage.show();
     }
 }
