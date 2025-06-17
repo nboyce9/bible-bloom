@@ -10,9 +10,19 @@ import java.io.IOException;
 
 public class LoginController {
     private Stage stage;
-    public void login() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        Scene scene = new Scene(loader.load());
+    private FXMLLoader loader;
+    private Scene scene;
+    public void loginPage() throws IOException {
+        loader = new FXMLLoader(getClass().getResource("login.fxml"));
+        scene = new Scene(loader.load());
         stage.show();
     }
+    public void login(ActionEvent event) throws IOException{
+        loader = new FXMLLoader(getClass().getResource("/com/nboyce/bible_bloom/view/bible.fxml"));
+        scene = new Scene(loader.load());
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
