@@ -8,4 +8,9 @@ public class ReadFromJson {
         String[] books = {};
         return List.of(books);
     }
+
+    public List<Integer> getChapters(String book){
+        Integer[] chapters ={};
+        return List.of(chapters);
+    }
 }
