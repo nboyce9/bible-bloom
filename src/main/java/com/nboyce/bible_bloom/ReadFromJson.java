@@ -14,10 +14,11 @@ public class ReadFromJson {
         List<String> books = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(new File("src/main/resources/com/nboyce/bible_bloom/json/bible_structure.json"));
+        System.out.println(jsonNode.asText());
 
-        String book  = jsonNode.get("book").asText();
-        System.out.println(book);
-        books.add(book);
+//        String book  = jsonNode.get("book").asText();
+//        System.out.println(book);
+//        books.add(book);
         return books;
     }
 
