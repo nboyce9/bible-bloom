@@ -8,11 +8,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class ReadFromJson {
+    private static final String pathName = "src/main/resources/com/nboyce/bible_bloom/json/bible_structure.json";
 
     public static  List<BibleBook> getBooks () throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            return mapper.readValue(new File("src/main/resources/com/nboyce/bible_bloom/json/bible_structure.json"), new TypeReference<>() {
+            return mapper.readValue(new File(pathName), new TypeReference<>() {
             });
         } catch (Exception e) {
             e.printStackTrace();
