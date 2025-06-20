@@ -20,7 +20,9 @@ public class ReadFromURL {
             String book = scanner.nextLine().toLowerCase();
             Console console = System.console();
             ReadFromJson readFromJson = new ReadFromJson();
-            readFromJson.getBooks();
+            for(BibleBook b: readFromJson.getBooks()){
+            System.out.println(b.getBook());
+            }
 
             String chapter = console.readLine("Enter a chapter: ");
             String verse = console.readLine("Enter a verse: ");

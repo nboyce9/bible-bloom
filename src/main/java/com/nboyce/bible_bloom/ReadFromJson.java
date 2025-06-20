@@ -1,5 +1,6 @@
 package com.nboyce.bible_bloom;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -10,16 +11,15 @@ import java.util.List;
 
 public class ReadFromJson {
 
-    public List<String> getBooks () throws IOException {
-        List<String> books = new ArrayList<>();
-        ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode jsonNode = objectMapper.readTree(new File("src/main/resources/com/nboyce/bible_bloom/json/bible_structure.json"));
-        System.out.println(jsonNode.asText());
-
-//        String book  = jsonNode.get("book").asText();
-//        System.out.println(book);
-//        books.add(book);
-        return books;
+    public List<BibleBook> getBooks () throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(new File("src/main/resources/com/nboyce/bible_bloom/json/bible_structure.json"), new TypeReference<>() {
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Integer> getChapters(String book){
