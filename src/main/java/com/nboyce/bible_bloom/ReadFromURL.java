@@ -19,6 +19,8 @@ public class ReadFromURL {
             String version = "en-kjv";
             String book = scanner.nextLine().toLowerCase();
             Console console = System.console();
+            ReadFromJson readFromJson = new ReadFromJson();
+            readFromJson.getBooks();
 
             String chapter = console.readLine("Enter a chapter: ");
             String verse = console.readLine("Enter a verse: ");
