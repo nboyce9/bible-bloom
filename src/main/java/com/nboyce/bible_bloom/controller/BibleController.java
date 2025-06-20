@@ -18,6 +18,7 @@ public class BibleController implements Initializable {
     Label textLabel;
     @FXML
     ChoiceBox<String> bookField, chapterField, verseField;
+    List<BibleBook> books = null;
 
     public void searchBibleVerse(){
 //        bookField.getItems().add("Genesis");
@@ -26,7 +27,6 @@ public class BibleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ReadFromJson readFromJson = new ReadFromJson();
-        List<BibleBook> books = null;
         try {
             books = readFromJson.getBooks();
         } catch (IOException e) {
@@ -34,12 +34,22 @@ public class BibleController implements Initializable {
         }
         for(BibleBook book: books){
             bookField.getItems().add(book.getBook());
-            bookField.setOnAction(this::getBook);
+            bookField.setOnAction(this::getChapter);
         }
 
     }
-    public void getBook(ActionEvent event){
+    public void getChapter(ActionEvent event){
         String book = bookField.getValue();
-        System.out.println(book);
+        BibleBook selectedBook = books.stream()
+                .filter(b -> b.getBook().equals(book))
+                .findFirst().orElse(null);
+
+        int chapterSize = selectedBook.getChapters().size();
+        if(selectedBook != null) {
+            chapterField.getItems().clear();
+            for (int i = 1; i < chapterSize; i++) {
+                chapterField.getItems().add(String.valueOf(i));
+            }
+        }
     }
 }

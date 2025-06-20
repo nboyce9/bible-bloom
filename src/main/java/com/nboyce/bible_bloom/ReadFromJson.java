@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ReadFromJson {
 
-    public List<BibleBook> getBooks () throws IOException {
+    public static  List<BibleBook> getBooks () throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         try {
             return mapper.readValue(new File("src/main/resources/com/nboyce/bible_bloom/json/bible_structure.json"), new TypeReference<>() {
@@ -18,16 +18,6 @@ public class ReadFromJson {
             e.printStackTrace();
             return null;
         }
-    }
-
-    public List<Integer> getChapters(String book){
-        Integer[] chapters ={};
-        return List.of(chapters);
-    }
-
-    public List<Integer> getVerses(String book, Integer chapter){
-        Integer[] verses ={};
-        return List.of(verses);
     }
 
 }
