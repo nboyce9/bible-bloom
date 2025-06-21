@@ -49,7 +49,7 @@ public class BibleController implements Initializable {
         int chapterSize = selectedBook.getChapters().size();
 
         chapterField.getItems().clear();
-        for (int i = 1; i < chapterSize; i++) {
+        for (int i = 1; i <= chapterSize; i++) {
             chapterField.getItems().add(String.valueOf(i));
         }
     }
@@ -61,8 +61,9 @@ public class BibleController implements Initializable {
                 .findFirst().orElse(null);
         int chapter = Integer.parseInt(chapterField.getValue());
         assert selectedBook != null;
-        int totalVerses = selectedBook.getChapters().get(chapter)-1;
-        for(int i = 1; i<=totalVerses; i++){
+        verseField.getItems().clear();
+        int totalVerses = selectedBook.getChapters().get(chapter-1);
+        for(int i = 1; i < totalVerses; i++){
             verseField.getItems().add(String.valueOf(i));
         }
 
