@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-
+import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -16,10 +16,10 @@ import java.util.ResourceBundle;
 
 public class BibleController implements Initializable {
     @FXML
-    Label textLabel;
-    @FXML
     ChoiceBox<String> bookField, chapterField, verseField;
     List<BibleBook> books = null;
+    @FXML
+    Text text;
 
 
     @Override
@@ -60,8 +60,8 @@ public class BibleController implements Initializable {
         BibleBook selectedBook = books.stream()
                 .filter(b -> b.getBook().equals(book))
                 .findFirst().orElse(null);
-        int chapter = Integer.parseInt(chapterField.getValue());
         assert selectedBook != null;
+        int chapter = Integer.parseInt(chapterField.getValue());
         verseField.getItems().clear();
         int totalVerses = selectedBook.getChapters().get(chapter-1);
         for(int i = 1; i < totalVerses; i++){
@@ -79,7 +79,7 @@ public class BibleController implements Initializable {
         String book = bookField.getValue().toLowerCase();
         String chapter = chapterField.getValue();
         String verse = verseField.getValue();
-        textLabel.setText(ReadFromURL.passage(book, chapter, verse));
+        text.setText(ReadFromURL.passage(book, chapter, verse));
 
    }
 }
