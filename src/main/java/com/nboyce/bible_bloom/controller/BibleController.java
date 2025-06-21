@@ -74,7 +74,7 @@ public class BibleController implements Initializable {
         String verse = verseField.getValue();
     }
 
-    public void searchBibleVerse(){
+    public void searchBibleVerse(ActionEvent e){
         String book = bookField.getValue();
         String chapter = chapterField.getValue();
         String verse = verseField.getValue();
