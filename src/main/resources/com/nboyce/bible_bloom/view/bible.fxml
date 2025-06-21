@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nboyce.bible_bloom.controller.BibleController">
    <children>
@@ -11,7 +12,11 @@
       <Label layoutX="197.0" layoutY="51.0" prefHeight="26.0" prefWidth="54.0" text="Chapter:" />
       <Label layoutX="336.0" layoutY="55.0" text="Verse:" />
       <ChoiceBox fx:id="verseField" layoutX="378.0" layoutY="51.0" prefHeight="26.0" prefWidth="60.0" />
-      <Label fx:id="textLabel" layoutX="67.0" layoutY="136.0" text="Label" textAlignment="JUSTIFY" wrapText="true" />
       <Button fx:id="searchBtn" layoutX="472.0" layoutY="51.0" mnemonicParsing="false" onAction="#searchBibleVerse" text="Search" />
+      <TextFlow layoutX="100.0" layoutY="128.0" prefHeight="250.0" prefWidth="250.0" textAlignment="CENTER">
+         <children>
+            <Text fx:id="text" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children>
+      </TextFlow>
    </children>
 </AnchorPane>
