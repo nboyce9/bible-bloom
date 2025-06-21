@@ -2,6 +2,7 @@ package com.nboyce.bible_bloom.controller;
 
 import com.nboyce.bible_bloom.BibleBook;
 import com.nboyce.bible_bloom.ReadFromJson;
+import com.nboyce.bible_bloom.ReadFromURL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -74,6 +75,10 @@ public class BibleController implements Initializable {
     }
 
     public void searchBibleVerse(){
+        String book = bookField.getValue();
+        String chapter = chapterField.getValue();
+        String verse = verseField.getValue();
+        textLabel.setText(ReadFromURL.passage(book, chapter, verse));
 
    }
 }
