@@ -72,10 +72,11 @@ public class BibleController implements Initializable {
 
     public void getVerses(ActionEvent event){
         String verse = verseField.getValue();
+        searchBibleVerse(event);
     }
 
     public void searchBibleVerse(ActionEvent e){
-        String book = bookField.getValue();
+        String book = bookField.getValue().toLowerCase();
         String chapter = chapterField.getValue();
         String verse = verseField.getValue();
         textLabel.setText(ReadFromURL.passage(book, chapter, verse));
