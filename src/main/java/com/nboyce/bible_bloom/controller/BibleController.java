@@ -34,22 +34,43 @@ public class BibleController implements Initializable {
         }
         for(BibleBook book: books){
             bookField.getItems().add(book.getBook());
-            bookField.setOnAction(this::getChapter);
+            bookField.setOnAction(this::getBook);
+            chapterField.setOnAction(this::getChapter);
         }
 
+
     }
-    public void getChapter(ActionEvent event){
+    public void getBook(ActionEvent event){
         String book = bookField.getValue();
         BibleBook selectedBook = books.stream()
                 .filter(b -> b.getBook().equals(book))
                 .findFirst().orElse(null);
 
         int chapterSize = selectedBook.getChapters().size();
+//        System.out.println(selectedBook.getChapters());
         if(selectedBook != null) {
             chapterField.getItems().clear();
             for (int i = 1; i < chapterSize; i++) {
                 chapterField.getItems().add(String.valueOf(i));
             }
         }
+    }
+
+    public void getChapter(ActionEvent event){
+        String book = bookField.getValue();
+        BibleBook selectedBook = books.stream()
+                .filter(b -> b.getBook().equals(book))
+                .findFirst().orElse(null);
+        int chapter = Integer.parseInt(chapterField.getValue());
+        System.out.println(chapter);
+        int totalVerses = selectedBook.getChapters().get(chapter)-1;
+        for(int i = 1; i<=totalVerses; i++){
+            verseField.getItems().add(String.valueOf(i));
+        }
+
+    }
+
+    public void getVerses(ActionEvent event){
+
     }
 }
