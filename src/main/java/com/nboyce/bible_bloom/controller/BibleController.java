@@ -35,8 +35,9 @@ public class BibleController implements Initializable {
             bookField.getItems().add(book.getBook());
             bookField.setOnAction(this::getBook);
             chapterField.setOnAction(this::getChapter);
-            verseField.setOnAction(this::getVerses);
+
         }
+        verseField.setOnAction(this::getVerses);
 
 
     }
@@ -67,7 +68,7 @@ public class BibleController implements Initializable {
         for(int i = 1; i < totalVerses; i++){
             verseField.getItems().add(String.valueOf(i));
         }
-
+        searchBibleChapter(event);
     }
 
     public void getVerses(ActionEvent event){
@@ -82,4 +83,11 @@ public class BibleController implements Initializable {
         text.setText(ReadFromURL.passage(book, chapter, verse));
 
    }
+    public void searchBibleChapter(ActionEvent e){
+        String book = bookField.getValue().toLowerCase();
+        String chapter = chapterField.getValue();
+//        String verse = null;
+        text.setText(ReadFromURL.passage(book, chapter, null));
+
+    }
 }
