@@ -20,22 +20,21 @@ public class BibleController implements Initializable {
     ChoiceBox<String> bookField, chapterField, verseField;
     List<BibleBook> books = null;
 
-    public void searchBibleVerse(){
-//        bookField.getItems().add("Genesis");
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ReadFromJson readFromJson = new ReadFromJson();
+
         try {
-            books = readFromJson.getBooks();
+            books = ReadFromJson.getBooks();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        assert books != null;
         for(BibleBook book: books){
             bookField.getItems().add(book.getBook());
             bookField.setOnAction(this::getBook);
             chapterField.setOnAction(this::getChapter);
+            verseField.setOnAction(this::getVerses);
         }
 
 
@@ -46,13 +45,12 @@ public class BibleController implements Initializable {
                 .filter(b -> b.getBook().equals(book))
                 .findFirst().orElse(null);
 
+        assert selectedBook != null;
         int chapterSize = selectedBook.getChapters().size();
-//        System.out.println(selectedBook.getChapters());
-        if(selectedBook != null) {
-            chapterField.getItems().clear();
-            for (int i = 1; i < chapterSize; i++) {
-                chapterField.getItems().add(String.valueOf(i));
-            }
+
+        chapterField.getItems().clear();
+        for (int i = 1; i < chapterSize; i++) {
+            chapterField.getItems().add(String.valueOf(i));
         }
     }
 
@@ -62,7 +60,7 @@ public class BibleController implements Initializable {
                 .filter(b -> b.getBook().equals(book))
                 .findFirst().orElse(null);
         int chapter = Integer.parseInt(chapterField.getValue());
-        System.out.println(chapter);
+        assert selectedBook != null;
         int totalVerses = selectedBook.getChapters().get(chapter)-1;
         for(int i = 1; i<=totalVerses; i++){
             verseField.getItems().add(String.valueOf(i));
@@ -72,6 +70,9 @@ public class BibleController implements Initializable {
 
     public void getVerses(ActionEvent event){
         String verse = verseField.getValue();
-        System.out.println();
     }
+
+    public void searchBibleVerse(){
+
+   }
 }
