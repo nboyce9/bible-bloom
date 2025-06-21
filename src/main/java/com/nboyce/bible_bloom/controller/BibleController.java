@@ -71,6 +71,7 @@ public class BibleController implements Initializable {
     }
 
     public void getVerses(ActionEvent event){
-
+        String verse = verseField.getValue();
+        System.out.println();
     }
 }
