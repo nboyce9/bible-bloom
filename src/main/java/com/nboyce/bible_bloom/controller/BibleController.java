@@ -5,10 +5,15 @@ import com.nboyce.bible_bloom.ReadFromJson;
 import com.nboyce.bible_bloom.ReadFromURL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -91,5 +96,12 @@ public class BibleController implements Initializable {
         chapterNumber.setText(chapter);
         text.setText(String.valueOf(ReadFromURL.passage(book, chapter, null)));
 
+    }
+    public void journal(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/nboyce/bible_bloom/view/journal.fxml"));
+        Scene scene = new Scene(loader.load());
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }
