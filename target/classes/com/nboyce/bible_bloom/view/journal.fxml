@@ -8,6 +8,6 @@
    <children>
       <TextArea fx:id="journalArea" layoutX="22.0" layoutY="54.0" prefHeight="276.0" prefWidth="375.0" promptText="What did you think of the passage ?" />
       <Button fx:id="saveBtn" layoutX="22.0" layoutY="346.0" mnemonicParsing="false" text="Save" />
-      <Button fx:id="clearBtn" layoutX="96.0" layoutY="346.0" mnemonicParsing="false" text="Clear" />
+      <Button fx:id="clearBtn" layoutX="96.0" layoutY="346.0" mnemonicParsing="false" onAction="#clear" text="Clear" />
    </children>
 </AnchorPane>
