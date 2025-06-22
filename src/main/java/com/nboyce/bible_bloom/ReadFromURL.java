@@ -30,14 +30,14 @@ public class ReadFromURL {
 
             if(url.toString().contains("/verses/")) {
                 Book bookWrapper = mapper.readValue(jsonBuilder.toString(), Book.class);
-                passage.append(chapter + ":" + bookWrapper.getVerse() + " - " + bookWrapper.getText());
+                passage.append(" " + bookWrapper.getVerse() + " - " + bookWrapper.getText());
             }
             else{
                 Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
                 // Loop through the verses
                 for (Book data : wrapper.data) {
 //                    System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());
-                    passage.append(data.getChapter()).append(":").append(data.getVerse()).append(" - ").append(data.getText());
+                    passage.append(" " + data.getVerse()  + " - " + data.getText());
                 }
             }
             return passage;
