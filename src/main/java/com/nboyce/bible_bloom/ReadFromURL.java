@@ -1,8 +1,6 @@
 package com.nboyce.bible_bloom;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -23,7 +21,7 @@ public class ReadFromURL {
             String line;
             while ((line = reader.readLine()) != null) {
                 jsonBuilder.append(line);
-                System.out.println(line);
+//                System.out.println(line);
             }
             reader.close();
 
@@ -36,6 +34,7 @@ public class ReadFromURL {
                 Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
                 // Loop through the verses
                 for (Book data : wrapper.data) {
+                    System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());
                     return data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText();
                 }
             }
