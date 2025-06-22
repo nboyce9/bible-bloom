@@ -20,6 +20,8 @@ public class BibleController implements Initializable {
     List<BibleBook> books = null;
     @FXML
     Text text;
+    @FXML
+    Label bookName, chapterNumber;
 
 
     @Override
@@ -35,7 +37,6 @@ public class BibleController implements Initializable {
             bookField.getItems().add(book.getBook());
             bookField.setOnAction(this::getBook);
             chapterField.setOnAction(this::getChapter);
-
         }
         verseField.setOnAction(this::getVerses);
 
@@ -48,6 +49,7 @@ public class BibleController implements Initializable {
                 .findFirst().orElse(null);
 
         assert selectedBook != null;
+        bookName.setText(book);
         int chapterSize = selectedBook.getChapters().size();
 
         chapterField.getItems().clear();
@@ -86,7 +88,7 @@ public class BibleController implements Initializable {
     public void searchBibleChapter(ActionEvent e){
         String book = bookField.getValue().toLowerCase();
         String chapter = chapterField.getValue();
-//        String verse = null;
+        chapterNumber.setText(chapter);
         text.setText(String.valueOf(ReadFromURL.passage(book, chapter, null)));
 
     }
