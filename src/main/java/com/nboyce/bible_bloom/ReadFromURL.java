@@ -7,11 +7,13 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ReadFromURL {
 
-    public static String passage(String book, String chapter, String verse){
+    public static List<String> passage(String book, String chapter, String verse){
         try{
             URL url = getUrl(book, chapter, verse);
             // Open a stream to the URL
@@ -21,24 +23,29 @@ public class ReadFromURL {
             String line;
             while ((line = reader.readLine()) != null) {
                 jsonBuilder.append(line);
-//                System.out.println(line);
+                System.out.println(line);
             }
             reader.close();
 
             ObjectMapper mapper = new ObjectMapper();
+            List<String> passages = new ArrayList<>();
 
             if(url.toString().contains("/verses/")) {
                 Book bookWrapper = mapper.readValue(jsonBuilder.toString(), Book.class);
-                return book + " " + chapter + ":" + bookWrapper.getVerse() + " - " + bookWrapper.getText();
+                String passage = book + " " + chapter + ":" + bookWrapper.getVerse() + " - " + bookWrapper.getText();
+                passages.add(passage);
+
             }else{
                 Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
                 // Loop through the verses
+                String passage;
                 for (Book data : wrapper.data) {
                     System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());
-                    return data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText();
+                    passage = data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText();
+                    passages.add(passage);
                 }
             }
-
+            return passages;
         } catch (IOException e) {
             // Handle exceptions (IOException)
             e.printStackTrace();
