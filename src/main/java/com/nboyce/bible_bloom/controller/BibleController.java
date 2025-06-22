@@ -80,17 +80,14 @@ public class BibleController implements Initializable {
         String book = bookField.getValue().toLowerCase();
         String chapter = chapterField.getValue();
         String verse = verseField.getValue();
-        for(String passage : ReadFromURL.passage(book, chapter, verse)){
-            text.setText(passage);
-        }
+        text.setText(String.valueOf(ReadFromURL.passage(book, chapter, verse)));
 
    }
     public void searchBibleChapter(ActionEvent e){
         String book = bookField.getValue().toLowerCase();
         String chapter = chapterField.getValue();
-        for(String passage : ReadFromURL.passage(book, chapter, null)){
-            text.setText(passage);
+//        String verse = null;
+        text.setText(String.valueOf(ReadFromURL.passage(book, chapter, null)));
 
-        }
     }
 }
