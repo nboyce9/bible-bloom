@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nboyce.bible_bloom.controller.JournalController">
+   <children>
+      <TextArea fx:id="journalArea" layoutX="22.0" layoutY="54.0" prefHeight="276.0" prefWidth="375.0" promptText="What did you think of the passage ?" />
+      <Button fx:id="saveBtn" layoutX="22.0" layoutY="346.0" mnemonicParsing="false" text="Save" />
+      <Button fx:id="clearBtn" layoutX="96.0" layoutY="346.0" mnemonicParsing="false" text="Clear" />
+   </children>
+</AnchorPane>
