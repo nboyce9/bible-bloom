@@ -21,7 +21,7 @@
             </TextFlow>
          </content>
       </ScrollPane>
-      <Button fx:id="favBtn" layoutX="96.0" layoutY="370.0" mnemonicParsing="false" text="Favourite" />
+      <Button fx:id="favBtn" layoutX="96.0" layoutY="370.0" mnemonicParsing="false" onAction="#favourite" text="Favourite" />
       <Button fx:id="journalBtn" layoutX="221.0" layoutY="370.0" mnemonicParsing="false" onAction="#journal" text="Journal" />
       <Label fx:id="bookName" layoutX="140.0" layoutY="100.0" text=" " />
       <Label fx:id="chapterNumber" layoutX="200.0" layoutY="100.0" text=" " />
