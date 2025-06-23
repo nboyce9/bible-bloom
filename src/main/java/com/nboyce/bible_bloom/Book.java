@@ -17,6 +17,11 @@ public class Book {
 
     public Book(){}
 
+    public Book(String book, int chapter){
+        this.book = book;
+        this.chapter = chapter;
+    }
+
     public Book(String version, String book, int chapter, int verse, String text) {
         this.version = version;
         this.book = book;
