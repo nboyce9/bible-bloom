@@ -9,6 +9,8 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JournalController {
     private Stage stage;
@@ -21,14 +23,12 @@ public class JournalController {
         scene = new Scene(loader.load());
         stage.show();
     }
-//    public void journal(ActionEvent event) throws IOException{
-//        loader = new FXMLLoader(getClass().getResource("/com/nboyce/bible_bloom/view/journal.fxml"));
-//        scene = new Scene(loader.load());
-//        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        stage.setScene(scene);
-//        stage.show();
-//    }
 
+    public void save(ActionEvent event){
+        String thought = journalArea.getText();
+        List<String> thoughts = new ArrayList<>();
+        thoughts.add(thought);
+    }
     public void clear(ActionEvent event){
         journalArea.clear();
     }
