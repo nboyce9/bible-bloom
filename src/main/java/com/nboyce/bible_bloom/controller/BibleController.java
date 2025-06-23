@@ -1,6 +1,7 @@
 package com.nboyce.bible_bloom.controller;
 
 import com.nboyce.bible_bloom.BibleBook;
+import com.nboyce.bible_bloom.Book;
 import com.nboyce.bible_bloom.ReadFromJson;
 import com.nboyce.bible_bloom.ReadFromURL;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -103,5 +105,16 @@ public class BibleController implements Initializable {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void favourite(ActionEvent event){
+        List<Book> favouritePassages = new ArrayList<>();
+        String book = bookField.getValue().toLowerCase();
+        String chapter = chapterField.getValue();
+//        String verse = verseField.getValue();
+//        if(verse.equals(null))
+        Book favouriteBook = new Book(book, Integer.parseInt(chapter));
+        favouritePassages.add(favouriteBook);
+        System.out.println(favouritePassages);
     }
 }
