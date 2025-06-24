@@ -111,10 +111,8 @@ public class BibleController implements Initializable {
         List<Book> favouritePassages = new ArrayList<>();
         String book = bookField.getValue().toLowerCase();
         String chapter = chapterField.getValue();
-//        String verse = verseField.getValue();
-//        if(verse.equals(null))
+
         Book favouriteBook = new Book(book, Integer.parseInt(chapter));
         favouritePassages.add(favouriteBook);
-//        System.out.println(favouritePassages);
     }
 }
