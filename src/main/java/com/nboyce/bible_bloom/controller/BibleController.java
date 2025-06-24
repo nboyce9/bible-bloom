@@ -115,6 +115,6 @@ public class BibleController implements Initializable {
 //        if(verse.equals(null))
         Book favouriteBook = new Book(book, Integer.parseInt(chapter));
         favouritePassages.add(favouriteBook);
-        System.out.println(favouritePassages);
+//        System.out.println(favouritePassages);
     }
 }
