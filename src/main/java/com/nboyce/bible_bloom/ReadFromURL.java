@@ -21,7 +21,6 @@ public class ReadFromURL {
             String line;
             while ((line = reader.readLine()) != null) {
                 jsonBuilder.append(line);
-                System.out.println(line);
             }
             reader.close();
 
@@ -36,7 +35,6 @@ public class ReadFromURL {
                 Data wrapper = mapper.readValue(jsonBuilder.toString(), Data.class);
                 // Loop through the verses
                 for (Book data : wrapper.data) {
-//                    System.out.println(data.getBook() + " " + data.getChapter() + ":" + data.getVerse() + " - " + data.getText());
                     passage.append(" " + data.getVerse()  + " - " + data.getText());
                 }
             }
