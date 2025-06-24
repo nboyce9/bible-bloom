@@ -53,7 +53,8 @@ public class ReadFromURL {
     public static URL getUrl(String book, String chapter, String verse) throws MalformedURLException, URISyntaxException {
         URL url;
         String version = "en-asv";
-        String baseURL = "https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/" + version + "/books/" + book + "/chapters/" + chapter;
+        String bookName = book.replaceAll("\\s+", "");
+        String baseURL = "https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/" + version + "/books/" + bookName + "/chapters/" + chapter;
 
         // Create a different URL object for verse or no verse
         if(verse != null){
