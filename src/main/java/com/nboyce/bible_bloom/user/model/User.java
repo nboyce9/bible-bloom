@@ -1,4 +1,4 @@
-package com.nboyce.bible_bloom.user;
+package com.nboyce.bible_bloom.user.model;
 
 public class User {
     String username;
