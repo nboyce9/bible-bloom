@@ -1,5 +1,8 @@
 package com.nboyce.bible_bloom.user.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class User {
     String username;
     String email;
